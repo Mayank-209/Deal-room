@@ -34,14 +34,19 @@ const router = createBrowserRouter([
   }
 ]);
 function App() {
-  const IP=process.env.IP
+  const TIP=process.env.REACT_APP_IP
+  console.log(TIP);
+  
   const { authUser } = useSelector((store) => store.user);
   const { socket } = useSelector((store) => store.socket);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (authUser) {
-      const socketio = io(`http://${IP}:5000`, {
+      const socketio = io(`${TIP}`, {
+
+
+
         query: {
           userId: authUser.user._id,
         },
